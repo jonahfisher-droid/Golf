@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Crushers vs Fireballs - Golf Championship Hub&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Tailwind CSS --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- FontAwesome Icons --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Firebase SDKs --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>tailwind.config = {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>theme: {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>extend: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>colors: {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>golf: {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>dark: '#1b4332',</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>DEFAULT: '#2d6a4f',</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>light: '#52b788',</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>accent: '#d8f3dc'</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body class="bg-gray-100 text-gray-800 font-sans antialiased pb-24"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Header --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;header class="bg-golf-dark text-white shadow-md sticky top-0 z-50"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="max-w-4xl mx-auto px-4 py-3 flex justify-between items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h1 class="text-base sm:text-lg font-bold tracking-wide"&gt;&lt;i class="fa-solid fa-flag-checkered mr-2"&gt;&lt;/i&gt;Crushers v Fireballs&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-xs text-golf-accent"&gt;Championship Hub • Stableford &amp; Handicaps&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center space-x-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span id="syncStatus" class="text-xs bg-amber-600 px-2 py-1 rounded text-white"&gt;&lt;i class="fa-solid fa-spinner fa-spin"&gt;&lt;/i&gt; Connecting...&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button onclick="shareApp()" class="bg-golf hover:bg-golf-light text-white px-3 py-1.5 rounded text-xs font-semibold shadow"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;i class="fa-solid fa-share-nodes mr-1"&gt;&lt;/i&gt; Share</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/header&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Navigation Tabs --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;nav class="bg-white border-b border-gray-200 shadow-sm sticky top-[57px] z-40"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="max-w-4xl mx-auto flex overflow-x-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button onclick="switchTab('live')" id="tab-live" class="flex-1 min-w-[100px] py-3 px-4 text-center text-xs sm:text-sm font-bold text-golf border-b-2 border-golf bg-golf-accent/20"&gt;Live Scoring&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button onclick="switchTab('history')" id="tab-history" class="flex-1 min-w-[100px] py-3 px-4 text-center text-xs sm:text-sm font-semibold text-gray-600 hover:text-golf"&gt;History &amp; Results&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button onclick="switchTab('rules')" id="tab-rules" class="flex-1 min-w-[100px] py-3 px-4 text-center text-xs sm:text-sm font-semibold text-gray-600 hover:text-golf"&gt;Rules &amp; Format&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button onclick="switchTab('gallery')" id="tab-gallery" class="flex-1 min-w-[100px] py-3 px-4 text-center text-xs sm:text-sm font-semibold text-gray-600 hover:text-golf"&gt;Photo Gallery&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/nav&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;!-- Main Container --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;main class="max-w-4xl mx-auto p-4 space-y-6"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- TAB 1: LIVE SCORING --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="section-live" class="space-y-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Team Score Banner --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;section class="bg-gradient-to-r from-golf-dark to-golf text-white rounded-2xl shadow-xl p-6 text-center border-2 border-golf-light"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-xs uppercase tracking-widest text-golf-accent font-semibold mb-3"&gt;&lt;i class="fa-solid fa-shield-halved mr-1"&gt;&lt;/i&gt; Team Championship Battle&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-2 gap-4 items-center"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white/10 rounded-xl p-4 backdrop-blur-sm border border-white/20"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="text-sm sm:text-base font-bold text-orange-300 uppercase tracking-wide mb-1"&gt;Fireballs&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div id="fireballsScore" class="text-4xl sm:text-6xl font-black tracking-tight text-white"&gt;0&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="text-[11px] text-gray-200 mt-1"&gt;Stableford Points&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-white/10 rounded-xl p-4 backdrop-blur-sm border border-white/20"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="text-sm sm:text-base font-bold text-blue-300 uppercase tracking-wide mb-1"&gt;Crushers&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div id="crushersScore" class="text-4xl sm:text-6xl font-black tracking-tight text-white"&gt;0&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="text-[11px] text-gray-200 mt-1"&gt;Stableford Points&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="teamStatusText" class="mt-4 text-xs sm:text-sm font-semibold text-golf-accent"&gt;Match is currently tied&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Individual Standings --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;section class="bg-white rounded-xl shadow-md p-4 overflow-hidden border border-gray-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex justify-between items-center mb-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h2 class="text-md font-bold text-golf-dark"&gt;&lt;i class="fa-solid fa-trophy mr-1 text-yellow-500"&gt;&lt;/i&gt; Individual Standings&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="text-xs text-gray-500"&gt;Form: &lt;span class="text-red-700 font-bold"&gt;Darker red = hot streak over last 3 holes&lt;/span&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="overflow-x-auto"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;table class="w-full text-left border-collapse text-sm"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;tr class="bg-golf-accent text-golf-dark border-b border-gray-200 text-xs"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;th class="p-2"&gt;Pos&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;th class="p-2"&gt;Player&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;th class="p-2"&gt;Team&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;th class="p-2 text-center"&gt;Gross&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;th class="p-2 text-center font-bold"&gt;Stableford&lt;/th&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/tr&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/thead&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;tbody id="leaderboardTableBody" class="divide-y divide-gray-100"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;!-- Populated via JavaScript --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/tbody&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/table&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/section&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Tee &amp; Group Controls --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-white p-4 rounded-xl shadow-md border border-gray-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label class="block text-xs font-semibold text-gray-600 mb-1"&gt;Select Tees:&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;select id="teeSelector" onchange="changeTees()" class="w-full border border-gray-300 rounded-lg p-2 text-sm bg-gray-50 focus:ring-2 focus:ring-golf"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="white"&gt;White Tees (Par 72)&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="yellow" selected&gt;Yellow Tees (Par 72)&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="red"&gt;Red Tees (Par 73)&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label class="block text-xs font-semibold text-gray-600 mb-1"&gt;Playing Group (Top 3 Day 1 get lead group on Sunday):&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;select id="groupSelector" onchange="renderScorecard()" class="w-full border border-gray-300 rounded-lg p-2 text-sm bg-gray-50 focus:ring-2 focus:ring-golf"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="all"&gt;All Players (All Groups)&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="1"&gt;Group 1 (Top 3 Stableford + Required Mix)&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="2"&gt;Group 2&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;!-- Scorecard Entry --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;section class="bg-white rounded-xl shadow-md p-4 border border-gray-200"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="flex justify-between items-center mb-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h2 class="text-md font-bold text-golf-dark"&gt;&lt;i class="fa-solid fa-pen-to-square mr-1"&gt;&lt;/i&gt; Scorecard&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="flex items-center space-x-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button onclick="changeHole(-1)" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-3 py-1 rounded text-xs font-bold"&gt;&lt;i class="fa-solid fa-chevron-left"&gt;&lt;/i&gt; Prev&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span id="currentHoleIndicator" class="text-xs font-bold bg-golf text-white px-2.5 py-1 rounded"&gt;Hole 1&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;button onclick="changeHole(1)" class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-3 py-1 rounded text-xs font-bold"&gt;Next &lt;i class="fa-solid fa-chevron-right"&gt;&lt;/i&gt;&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="holeDetailCard" class="bg-golf-accent/50 p-3 rounded-lg mb-4 flex justify-between items-center text-xs sm:text-sm"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="font-bold text-golf-dark text-base" id="hdHoleNum"&gt;Hole 1&lt;/span&gt;:<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="font-semibold" id="hdHoleName"&gt;Adler's Elbow&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="space-x-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span&gt;Par: &lt;strong id="hdPar"&gt;5&lt;/strong&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span&gt;SI: &lt;strong id="hdSI"&gt;9&lt;/strong&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span&gt;Yards: &lt;strong id="hdYards"&gt;499&lt;/strong&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="playerScoreInputs" class="space-y-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;!-- Populated via JavaScript --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- TAB 2: HISTORY &amp; PAST RESULTS --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="section-history" class="space-y-6 hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;section class="bg-white rounded-xl shadow-md p-6 border border-gray-200 space-y-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-lg font-bold text-golf-dark border-b pb-2"&gt;&lt;i class="fa-solid fa-clock-rotate-left mr-2"&gt;&lt;/i&gt; Tournament History &amp; Archives&lt;/h2&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;!-- St Pierre --&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="space-y-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3 class="font-bold text-golf text-md"&gt;St Pierre (18-19th April 2026)&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-xs text-gray-600"&gt;&lt;strong&gt;Team Competition:&lt;/strong&gt; Crushers 34.25 vs Fireballs 33.83&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-xs text-gray-600"&gt;&lt;strong&gt;Individual Top</p>
+</body>
+</html>
